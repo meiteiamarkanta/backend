@@ -11,14 +11,13 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->id();
-            $table->string('_id')->unique();
+            $table->uuid('id')->primary();
             $table->string('title');
             $table->string('remark')->nullable();
 
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->uuid('created_by')->nullable();
+            $table->uuid('updated_by')->nullable();
+            $table->uuid('deleted_by')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

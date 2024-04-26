@@ -11,14 +11,13 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('course_section_resource_contents', function (Blueprint $table) {
-            $table->id();
-            $table->string('_id')->unique();
-            $table->unsignedBigInteger('section_id');
-            $table->unsignedBigInteger('resource_id');
+            $table->uuid('id')->primary();
+            $table->uuid('section_id');
+            $table->uuid('resource_id');
 
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->uuid('created_by')->nullable();
+            $table->uuid('updated_by')->nullable();
+            $table->uuid('deleted_by')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
